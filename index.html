@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="./images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceOutdoor</title>
+    <style>
+        @font-face {
+            font-family: 'MKARCADECAPS';
+            src: url('./pixelfont.ttf');
+        }
+        body{
+            background-image: url(./images/backgroundPage.png);
+            font-family: MKARCADECAPS;
+        }
+
+        .mainblock{
+            box-shadow: 2px 2px 12px 2px rgb(36,24,51);
+            width: 880px;
+            height: 440px;
+            margin-top: 15px;
+            background-image: url(./images/menu.gif);
+            background-size: contain;
+            position: absolute;
+            top: 0;
+            /* display: none; */
+        }
+
+        .block{
+            width: 550px;
+            height: 430px;
+            background-color: rgba(158, 152, 152, 0.432);
+            position: absolute;
+            top: 0;
+            margin-top: 5px;
+            margin-left: 165px;
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .block1{
+            display: flex;
+            justify-content: center;
+        }
+        .block1__text{
+            font-size: 65px;
+            color: rgb(255, 255, 255);
+            line-height:0px ;
+            margin-top: 35px;
+        }
+
+        .block2__text{
+            font-size: 26px;
+            color: rgb(255, 255, 255);
+            
+            line-height:0px ;
+            margin-top: 10px;
+        }
+
+        .block2{
+            height: fit-content;
+            margin-left: 30px;
+            margin-top: -25px;
+            display: flex;
+            height: 30px;
+        }
+
+        .block2-field{
+            height: 20px;
+            margin-top: -5px;
+            margin-left: 10px;
+            width: 180px;
+        }
+        input[type=text] {
+            border: 2px solid rgb(175, 49, 49);
+            border-radius: 4px;
+            font-family: MKARCADECAPS;
+            font-size: 25px;
+            color: rgb(0, 0, 0);
+        }
+
+        .block3{
+            height: fit-content;
+            margin-left: 30px;
+            display: flex;
+            height: 30px;
+            flex-direction: column;
+        }
+
+        .block3__text{
+            
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 0px;
+        }
+
+        
+
+
+        /* смерть персонажа блок меню */
+        .block__death{
+            width: 480px;
+            height: 190px;
+            background-color: rgba(158, 152, 152, 0.479);
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            margin-top: 140.5px;
+            margin-left: 200px;
+            display: none;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .death__text{
+            height: fit-content;
+            width: fit-content;
+            font-size: 48px;
+            color: rgb(255, 255, 255);
+            
+            line-height:0px ;
+            margin-bottom: 40px;
+        }
+
+        .buttons{
+            margin-bottom: -20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .button__again{
+            width: 200px;
+            height: 40px;
+            background-color: rgb(139, 34, 34);
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .button__again:hover{
+            box-shadow: 2px 2px 8px 2px rgb(139, 34, 34);
+            transition: 0.4s all ease-in-out;
+        }
+
+        .button__menu{
+            width: 200px;
+            height: 40px;
+            background-color: #241833;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .button__menu:hover{
+            box-shadow: 2px 2px 8px 2px #241833;
+            transition: 0.4s all ease-in-out;
+        }
+
+        .block4{
+            display: flex;
+            justify-content: center;
+            margin-right: 27px;
+        }
+
+        .block4__subblock1{
+            width: 200px;
+            height: 40px;
+            background-color: rgb(139, 34, 34);
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            
+        }
+
+        .block4__subblock1:hover{
+            box-shadow: 2px 2px 8px 2px rgb(139, 34, 34);
+            transition: 0.4s all ease-in-out;
+
+        }
+
+        .block4__subblock2{
+            height: 40px;
+            width: 40px;
+            background-color: rgb(139, 34, 34);
+            
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        .block4__subblock3{
+            height: 40px;
+            width: 40px;
+            background-color: rgb(139, 34, 34);
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        .hidden{
+            display: none;
+            background-color: rgb(102, 26, 26);
+            width: 250px;
+            height: 80px;
+            position: absolute;
+            top: 297px;
+            left: 126.5px;
+            cursor: unset;
+        }
+
+        .block4__subblock2:hover > .hidden{
+            display: block;
+        }
+
+        .cup{
+            box-shadow: 2px 2px 8px 2px #991f33;
+            width: 880px;
+            height: 440px;
+            margin-top: 15px;
+            background-image: url(./images/menurecords.png);
+            background-size: contain;
+            position: absolute;
+            top: 0;
+            display: none;
+        }
+
+        .cup__block{
+            width: 500px;
+            height: 400px;
+            background-color: rgba(165, 140, 140, 0.452);
+            position: absolute;
+            top: 0;
+            margin-top: 20px;
+            margin-left: 190px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cup__word{
+            height: fit-content;
+            width: fit-content;
+            font-size: 48px;
+            color: rgb(255, 255, 255);
+            line-height:0px ;
+            margin-bottom: 30px;
+            margin-top: -10px;
+        }
+
+        .cup__bl{
+            width: 400px;
+            height: 45px;
+            background-color: rgba(214, 122, 80, 0.61);
+            margin-bottom: 10px;
+            display: flex;
+        }
+
+        .cup__blocks{
+            margin-top: -50px;
+        }
+        
+        .name{
+            width: 170px;
+            height: 45px;
+            border: 1px solid #ffffff;
+            font-size: 23px;
+            padding-left: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .type{
+            width: 110px;
+            height: 45px;
+            border: 1px solid #ffffff;
+            font-size: 17px;
+            padding-left: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .time{
+            width: 110px;
+            height: 45px;
+            border: 1px solid #ffffff;
+            font-size: 23px;
+            padding-left: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <!-- <div class="divv">
+        <p >1</p>
+    </div> -->
+    
+<div style="position: relative;">
+    <canvas  id="canvas" width="880" height="440" style="z-index: 0; "> </canvas> 
+    <div class="block__death" id="death">
+        <div class="death__text">Вы проиграли!</div>
+        
+        <div class="buttons">
+            <div class="button__again" id="again" style="margin-right: 25px;" >
+                <p  style="color: #ffffff;font-size: 29px;line-height: 0px;">Начать заново</p>
+        
+            </div>
+            <div class="button__menu" id="menu">
+                <p  style="color: #ffffff;font-size: 29px;line-height: 0px;">В меню</p>
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+<div class="mainblock" id="block">
+    <div class="block" >
+        <div class="block1">
+            <p class="block1__text">Space Outdoor</p>
+        </div>
+        <div class="block2">
+            <p class="block2__text">Введите имя:</p>
+            <input maxlength="9" onkeyup="var yratext=/[' ','А-Яа-яЁё','1-9','A-Za-z']/; if(!yratext.test(this.value)) this.value=''" type="text" class="block2-field" placeholder="Игрок" id="field">
+        </div>
+        <div class="block3">
+            <div class="block3__subblock1">
+                <div style="display: flex; " >
+                    <div style="border: 2px solid #000000; color: #ffffff;  font-size: 25px; width: 27px; height: 27px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">A</div>
+                    <div style="border: 2px solid #000000; color: #ffffff;  font-size: 25px; width: 27px; height: 27px; display: flex; justify-content: center; align-items: center;">D</div>
+                    <p class="block3__text" style="margin-left: 10px; margin-right: 10px;">или</p>
+                    <div style="border: 2px solid #000000; color: #ffffff;  font-size: 25px; width: 27px; height: 27px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">&#8592;</div>
+                    <div style="border: 2px solid #000000; color: #ffffff;  font-size: 25px; width: 27px; height: 27px; display: flex; justify-content: center; align-items: center;">&#8594;</div>
+                    <p class="block3__text" style="margin-left: 10px; margin-right: 10px;">Движение персонажем</p>
+                </div>
+            </div>
+            <div class="block3__subblock1">
+                <div style="display: flex; " >
+                    <div style="border: 2px solid #000000; color: #ffffff;  font-size: 25px; width: 67px; height: 27px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">SPACE</div>
+                    <p class="block3__text" style="margin-left: 0px; margin-right: 10px;">Прыжок</p>
+                </div>
+            </div>
+            <div class="block3__subblock1">
+                <div style="display: flex; " >
+                    <div style="border: 2px solid #000000; color: #ffffff;  font-size: 25px; width: 67px; height: 27px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">SHIFT</div>
+                    <p class="block3__text" style="margin-left: 0px; margin-right: 10px;">Выстрел обычными патронами</p>
+                </div>
+            </div>
+            <div class="block3__subblock1">
+                <div style="display: flex; " >
+                    <div style="border: 2px solid #000000; color: #ffffff;  font-size: 25px; width: 27px; height: 27px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">G</div>
+                    <p class="block3__text" style="margin-left: 0px; margin-right: 10px;">Выстрел усиленным патроном</p>
+                </div>
+            </div>
+            <div class="block3__subblock1" style="width: 400px; margin-top: -10px; margin-left: 40px;">
+                <div style="display: flex; " >
+                    <p  style="color: #ffffff;font-size: 15px;line-height: 0px;">( Повторный выстрел возможен после уничтожения</p>
+                    
+                </div>
+                <div style="display: flex; margin-top: -14px;" >
+                    <p  style="color: #ffffff;font-size: 15px;line-height: 0px;">предыдущего снаряда )</p>
+                    
+                </div>
+            </div>
+            <div class="block3__subblock1">
+                <div style="display: flex; " >
+                    <div style="border: 2px solid #000000; color: #ffffff;  font-size: 25px; width: 27px; height: 27px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">T</div>
+                    <p class="block3__text" style="margin-left: 0px; margin-right: 10px;">Установить турель (запас: 15 обычных патрон)</p>
+                </div>
+            </div>
+            <div class="block3__subblock1" style="width: 400px; margin-top: -10px; margin-left: 40px;">
+                <div style="display: flex; " >
+                    <p  style="color: #ffffff;font-size: 15px;line-height: 0px;">( Повторная установка возможна после полного отстрела</p>
+                    
+                </div>
+                <div style="display: flex; margin-top: -14px;" >
+                    <p  style="color: #ffffff;font-size: 15px;line-height: 0px;">предыдущей турели )</p>
+                    
+                </div>
+            </div>
+            <div class="block4">
+                <div class="block4__subblock1" id="play">
+                    <p  style="color: #ffffff;font-size: 29px;line-height: 0px;">Начать игру</p>
+                </div>
+                <div class="block4__subblock2">
+                    <img src="./images/menubadge.png" style="width: 30px;">
+                    <div class="hidden" style="font-size: 18px; color: #ffffff;">
+                        <div class="hidden_block1" style="margin-left: 20px; margin-top: -10px;">
+                            <p><input type="checkbox" id="music" checked style="cursor: pointer;"> Музыка (рекомменд.)</p>
+                        </div>
+                        <div class="hidden_block2" style="margin-left: 20px; margin-top: -18px; ">
+                            <p><input type="checkbox" id="easy" style="cursor: pointer;"> Тренировочный режим </p> 
+                            <p style="margin-left: 20px; margin-top: -15px; ">(у существ по 1 жизни)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="block4__subblock3" id="toCups">
+                    <img src="./images/cupbadge.png" style="width: 30px;">
+                </div>
+            </div>
+            
+        </div>
+        
+        
+    </div>
+</div>
+
+<div class="cup" id="cupp">
+    <div class="cup__block">
+        <div class="cup__word">
+            <p>Ваши рекорды</p>
+        </div>
+
+        <div class="cup__blocks">
+            <div class="cup__bl">
+                <div class="name">
+                    <p id="name1"></p>
+                </div>
+                <div class="type">
+                    <p id="type1"></p>
+                </div>
+                <div class="time">
+                    <p id="time1"></p>
+                </div>
+            </div>
+            <div class="cup__bl">
+                <div class="name">
+                    <p id="name2"></p>
+                </div>
+                <div class="type">
+                    <p id="type2"></p>
+                </div>
+                <div class="time">
+                    <p id="time2"></p>
+                </div>
+            </div>
+            <div class="cup__bl">
+                <div class="name">
+                    <p id="name3"></p>
+                </div>
+                <div class="type">
+                    <p id="type3"></p>
+                </div>
+                <div class="time">
+                    <p id="time3"></p>
+                </div>
+            </div>
+            <div class="cup__bl">
+                <div class="name">
+                    <p id="name4"></p>
+                </div>
+                <div class="type">
+                    <p id="type4"></p>
+                </div>
+                <div class="time">
+                    <p id="time4"></p>
+                </div>
+            </div>
+            <div class="cup__bl">
+                <div class="name">
+                    <p id="name5"></p>
+                </div>
+                <div class="type">
+                    <p id="type5"></p>
+                </div>
+                <div class="time">
+                    <p id="time5"></p>
+                </div>
+            </div>
+        </div>
+        <div class="button__menu" id="menuFromCup">
+            <p  style="color: #ffffff;font-size: 29px;line-height: 0px;">В меню</p>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="js/start.js"></script>
+<script src="js/game.js"></script>  
+<script src="js/spacemarine.js"></script>
+<script src="js/constructors.js"></script>
+<script src="js/otherEntities.js"></script>
+</body>
+</html>
