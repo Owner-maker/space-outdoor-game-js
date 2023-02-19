@@ -18,6 +18,3 @@ This game based on JavaScript, HTML and CSS with using no additional libraries.
 ![image](screens/game.jpg)
 
 ![image](screens/game2.png)
-=======
-Made in 2019.
->>>>>>> 0c3909ad69691e9b8d4d3cd7a63cac272058b553
